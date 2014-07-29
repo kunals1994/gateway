@@ -89,7 +89,7 @@ def get_recs(request):
         if( seconds < 300):
             continue
 
-        item_id = int(result["itemId"][0])
+        item_id = int(result["itemId"][0]) % 214748364
         titl = result["title"][0]
         img_url = result["galleryURL"][0]
         pric = result["sellingStatus"][0]["currentPrice"][0]["__value__"] + " " + result["sellingStatus"][0]["currentPrice"][0]["@currencyId"]
