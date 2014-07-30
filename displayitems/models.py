@@ -4,9 +4,9 @@ from django.db import models
 class Item(models.Model):
 	imgurl = models.CharField(max_length=300)
 	title = models.CharField(max_length=500)
-	itemid = models.BigIntegerField(default=0)
+	itemid = models.CharField(max_length=20)
 	price = models.CharField(max_length=50)
-	gender = models.BigIntegerField(default = 2)
+	gender = models.IntegerField(default=2)
 
 	def __str__(self):
 		return self.title

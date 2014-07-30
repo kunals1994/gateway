@@ -23,7 +23,7 @@ def rec_html(request):
     else:
         g = request.POST.__getitem__("gender")
 
-    ret = """<div class="itemdisplay" align="center">%(title)s<br><br><img width=280 height=280 src="%(imgurl)s"/><br><br>%(price)s <br><br><a href=""><button class="btn btn-default btn-lg">Like</button></a>&nbsp;<a align="center" href="" class="btn btn-default btn-lg" id = "guest" onclick="javascript:void window.open('http://offer.ebay.com/ws/eBayISAPI.dll?BinConfirm&item=%(itemid)s','','width=1000, height=750');">Buy!</a>&nbsp;<a href=""><button class="btn btn-default btn-lg">Dislike</button></a></div><br><br><br>"""
+    ret = """<div class="itemdisplay" align="center"><br><h3 class="brand-heading">%(title)s</h3><br><img width=280 height=280 src="%(imgurl)s"/><br><p class="intro-text">%(price)s</p><br><a href=""><button class="btn btn-default btn-lg">Like</button></a>&nbsp;<a align="center" href="" class="btn btn-default btn-lg" id = "guest" onclick="javascript:void window.open('http://offer.ebay.com/ws/eBayISAPI.dll?BinConfirm&item=%(itemid)s','','width=1000, height=750');">Buy!</a>&nbsp;<a href=""><button class="btn btn-default btn-lg">Dislike</button></a></div><br><br><br>"""
     x = 0
 
     try:
@@ -89,7 +89,7 @@ def get_recs(request):
         if( seconds < 300):
             continue
 
-        item_id = int(result["itemId"][0]) % 214748364
+        item_id = result["itemId"][0]
         titl = result["title"][0]
         img_url = result["galleryURL"][0]
         pric = result["sellingStatus"][0]["currentPrice"][0]["__value__"] + " " + result["sellingStatus"][0]["currentPrice"][0]["@currencyId"]
