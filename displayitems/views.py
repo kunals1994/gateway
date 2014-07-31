@@ -23,7 +23,6 @@ def rec_html(request):
     else:
         g = request.POST.__getitem__("gender")
 
-<<<<<<< HEAD
     ret = """<div id="itemdisplay" align="center" style="position:relative;">
                 <br>
                 <h3 class="brand-heading">
@@ -49,9 +48,7 @@ def rec_html(request):
                 </button>
             </div>
             <br><br><br>"""
-=======
     ret = """<div class="itemdisplay" align="center"><br><h3 class="brand-heading">%(title)s</h3><br><img width=280 height=280 src="%(imgurl)s"/><br><p class="intro-text">%(price)s</p><br><a href=""><button class="btn btn-default btn-lg">Like</button></a>&nbsp;<a align="center" href="" class="btn btn-default btn-lg" id = "guest" onclick="javascript:void window.open('http://offer.ebay.com/ws/eBayISAPI.dll?BinConfirm&item=%(itemid)s','','width=1000, height=750');">Buy!</a>&nbsp;<a href=""><button class="btn btn-default btn-lg">Dislike</button></a></div><br><br><br>"""
->>>>>>> 38d28e042ba4ca171f6d0dacf28b584fccd3201a
     x = 0
 
     try:

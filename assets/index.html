@@ -24,11 +24,7 @@
     <link href='http://fonts.googleapis.com/css?family=Raleway:200' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Oxygen:300' rel='stylesheet' type='text/css'>
 
-<script>function goSwipe(){window.location.assign("swipe");}</script>
-<<<<<<< HEAD
-<script>function go(){window.location.assign("swipe?men");}</script>
-=======
->>>>>>> 38d28e042ba4ca171f6d0dacf28b584fccd3201a
+<script src="assets/js/custom.js"></script>
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
@@ -36,8 +32,8 @@
  
     <!-- Intro Header -->
     <header class="intro">
-        <div class="intro-body">
-            <div class="container">
+        <div class="intro-body" id="content" style="position:relative;">
+            <div class="container" id="homecontent">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
                         <h1 class="brand-heading">Gateway</h1>
@@ -54,6 +50,9 @@
         </div>
     </header>
 
+    <script>
+        document.onkeydown=function(a){"39"!=a.which&&"77"!=a.which||go();"37"!=a.which&&"87"!=a.which||goSwipe()};
+    </script>
     <!-- jQuery Version 1.11.0 -->
     <script src="assets/js/jquery-1.11.0.js"></script>
 
