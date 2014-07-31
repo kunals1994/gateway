@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Not Tinder</title>
+    <title>Find your fashion</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -24,17 +24,8 @@
     <link href='http://fonts.googleapis.com/css?family=Raleway:200' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Oxygen:300' rel='stylesheet' type='text/css'>
 
-    <script>function openWindow(){
-        try{
-    var win = window.open('https://signin.ebay.com/ws/eBayISAPI.dll', '1366002941508',  'width=1000,height=500,left=375,top=330');
-        var loc = (win.location.pathname);
-    setTimeout(function(){
-        win.close();
-        location.assign("swipe")
-    }, 12000);
-} catch(err){alert(err.message);}}</script>
-
-<script>function goSwipe(){location.assign('swipe')}</script>
+<script>function goSwipe(){window.location.assign("swipe");}</script>
+<script>function go(){window.location.assign("swipe?men");}</script>
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
@@ -49,7 +40,10 @@
                         <h1 class="brand-heading">Gateway</h1>
                         <p class="intro-text">Find Your Fashion</p>
                         <button class="btn btn-default btn-lg" onclick="javascript:void goSwipe();">
-                            Get Started
+                            Women
+                        </button>
+                        <button class="btn btn-default btn-lg" onclick="javascript:void go();">
+                            Men
                         </button>
                     </div>
                 </div>

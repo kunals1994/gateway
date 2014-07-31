@@ -17,13 +17,37 @@ def swipe(request):
 
 def rec_html(request):
     g = 3
-    print len(Item.objects.all())
+
     if(request.method=='GET'):
         g = request.GET.__getitem__("gender")
     else:
         g = request.POST.__getitem__("gender")
 
-    ret = """<div class="itemdisplay" align="center">%(title)s<br><br><img width=280 height=280 src="%(imgurl)s"/><br><br>%(price)s <br><br><a href=""><button class="btn btn-default btn-lg">Like</button></a>&nbsp;<a align="center" href="" class="btn btn-default btn-lg" id = "guest" onclick="javascript:void window.open('http://offer.ebay.com/ws/eBayISAPI.dll?BinConfirm&item=%(itemid)s','','width=1000, height=750');">Buy!</a>&nbsp;<a href=""><button class="btn btn-default btn-lg">Dislike</button></a></div>"""
+    ret = """<div id="itemdisplay" align="center" style="position:relative;">
+                <br>
+                <h3 class="brand-heading">
+                    %(title)s
+                </h3>
+                <br>
+                <img width=280 height=280 src="%(imgurl)s"/>
+                <br>
+                <p class="intro-text">
+                    %(price)s
+                </p>
+                <br>
+                <button class="btn btn-default btn-lg" onclick="javascript:void dislike();">
+                    Dislike
+                </button>
+                &nbsp;
+                <button id="buybutton" class="btn btn-default btn-lg" onclick="javascript:void buy('%(itemid)s');">
+                    Buy!
+                </button>
+                &nbsp;
+                <button class="btn btn-default btn-lg" onclick="javascript:void like();">
+                    Like
+                </button>
+            </div>
+            <br><br><br>"""
     x = 0
 
     try:
@@ -60,7 +84,7 @@ def get_recs(request):
     else:
         cat_id = "15724"
 
-    url = "http://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsByCategory&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=KunalSha-8956-4859-9dca-aca35167996c&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&categoryId=%s&paginationInput.entriesPerPage=10000" % cat_id
+    url = "http://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsByCategory&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=KunalSha-8956-4859-9dca-aca35167996c&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&categoryId=%s&outputSelector=PictureURLSuperSize&paginationInput.entriesPerPage=10000" % cat_id
     count = 0
 
 
@@ -89,10 +113,14 @@ def get_recs(request):
         if( seconds < 300):
             continue
 
-        item_id = int(result["itemId"][0])
+        item_id = result["itemId"][0]
         titl = result["title"][0]
-        img_url = result["galleryURL"][0]
         pric = result["sellingStatus"][0]["currentPrice"][0]["__value__"] + " " + result["sellingStatus"][0]["currentPrice"][0]["@currencyId"]
+        try:
+            img_url = result["pictureURLSuperSize"][0]
+        except:
+            img_url = result["galleryURL"][0]
+
 
         if(len(Item.objects.filter(itemid=item_id)) != 0):
             continue
