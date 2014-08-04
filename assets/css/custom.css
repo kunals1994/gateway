@@ -1,0 +1,15 @@
+#image-price-container{
+	width:auto;
+	height:825px;
+	display: inline-block;
+	border: 25px solid white;
+}
+
+.imageofwidth40{
+	width: 300px;
+	height: auto;
+}
+
+#itemdisplay{
+	height:1200;
+}

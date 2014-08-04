@@ -36,23 +36,29 @@
             <div class="container" id="homecontent">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                        <h1 class="brand-heading">Gateway</h1>
-                        <p class="intro-text">Find Your Fashion</p>
-                        <button class="btn btn-default btn-lg" onclick="javascript:void goSwipe();">
-                            Women
-                        </button>
-                        <button class="btn btn-default btn-lg" onclick="javascript:void go();">
-                            Men
-                        </button>
+                        <div id="title-heading" style="display:none;">
+                            <h1 class="brand-heading">Gateway</h1>
+                        </div>
+
+                        <div id="slogan-text" style="display:none;">
+                            <p class="intro-text">Find Your Fashion</p>
+                        </div>
+
+                        <div id="control-buttons" style="display:none;">
+                            <button class="btn btn-default btn-lg" onclick="javascript:void goSwipe();">
+                                Women
+                            </button>
+                            <button class="btn btn-default btn-lg" onclick="javascript:void go();">
+                                Men
+                            </button>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <script>
-        document.onkeydown=function(a){"39"!=a.which&&"77"!=a.which||go();"37"!=a.which&&"87"!=a.which||goSwipe()};
-    </script>
     <!-- jQuery Version 1.11.0 -->
     <script src="assets/js/jquery-1.11.0.js"></script>
 
@@ -64,6 +70,11 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="assets/js/grayscale.js"></script>
+
+    <script>
+        $("#title-heading").fadeIn(1000);$("#slogan-text").fadeIn(1500);$("#control-buttons").fadeIn(2000);document.onkeydown=function(a){"39"!=a.which&&"77"!=a.which||go();"37"!=a.which&&"87"!=a.which||goSwipe()};
+    </script>
+
 
 </body>
 

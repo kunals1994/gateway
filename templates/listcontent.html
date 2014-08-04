@@ -1,0 +1,36 @@
+<div id="itemdisplay" align="center" style="position:relative;">
+    <br>
+    <div id="title-holder" style="display:none;">
+        <h3 class="brand-heading">
+            %(title)s
+        </h3>
+    </div>
+
+    <br>
+
+    <div id="image-price-cont" style="display:none;">
+        <img src="%(imgurl)s" class="imageofwidth40"/>
+        <br>
+        <p class="intro-text">
+            %(price)s
+        </p>
+    </div>
+
+    <br>
+
+    <div id="button-holder" style="display:none;">
+        <button type="button" id="dislikebutton" class="btn btn-default btn-lg" onclick="dislike()">
+            Dislike
+        </button>
+        &nbsp;
+        <button type="button" id="buybutton" class="btn btn-default btn-lg" onclick="buy('%(itemid)s')">
+            Buy!
+        </button>
+        &nbsp;
+        <button type="button" id="likebutton" class="btn btn-default btn-lg" onclick="like()">
+            Like
+        </button>
+    </div>
+
+</div>
+<br><br><br>

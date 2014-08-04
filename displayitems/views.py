@@ -10,10 +10,10 @@ from django_project import settings
 BASE_DIR = settings.BASE_DIR
 
 def home(request):
-    return HttpResponse(open(BASE_DIR + "/assets/index.html", 'rb').read())
+    return HttpResponse(open(BASE_DIR + "/templates/index.html", 'rb').read())
 
 def swipe(request):
-    return HttpResponse(open(BASE_DIR + "/assets/list.html", 'rb').read())
+    return HttpResponse(open(BASE_DIR + "/templates/list.html", 'rb').read())
 
 def rec_html(request):
     g = 3
@@ -23,39 +23,14 @@ def rec_html(request):
     else:
         g = request.POST.__getitem__("gender")
 
-    ret = """<div id="itemdisplay" align="center" style="position:relative;">
-                <br>
-                <h3 class="brand-heading">
-                    %(title)s
-                </h3>
-                <br>
-                <img width=280 height=280 src="%(imgurl)s"/>
-                <br>
-                <p class="intro-text">
-                    %(price)s
-                </p>
-                <br>
-                <button class="btn btn-default btn-lg" onclick="javascript:void dislike();">
-                    Dislike
-                </button>
-                &nbsp;
-                <button id="buybutton" class="btn btn-default btn-lg" onclick="javascript:void buy('%(itemid)s');">
-                    Buy!
-                </button>
-                &nbsp;
-                <button class="btn btn-default btn-lg" onclick="javascript:void like();">
-                    Like
-                </button>
-            </div>
-            <br><br><br>"""
-    ret = """<div class="itemdisplay" align="center"><br><h3 class="brand-heading">%(title)s</h3><br><img width=280 height=280 src="%(imgurl)s"/><br><p class="intro-text">%(price)s</p><br><a href=""><button class="btn btn-default btn-lg">Like</button></a>&nbsp;<a align="center" href="" class="btn btn-default btn-lg" id = "guest" onclick="javascript:void window.open('http://offer.ebay.com/ws/eBayISAPI.dll?BinConfirm&item=%(itemid)s','','width=1000, height=750');">Buy!</a>&nbsp;<a href=""><button class="btn btn-default btn-lg">Dislike</button></a></div><br><br><br>"""
+    ret = open(BASE_DIR + "/templates/listcontent.html", 'rb').read()
+
     x = 0
 
     try:
         x = Item.objects.filter(gender=g)[0]
     except:
-        print "goodbye_world"
-        return HttpResponse("")
+        return HttpResponse("<script>setTimeout(function(){location.reload()},1E3);</script>")
     params = {}
     params["title"] = x.title
     params["imgurl"] = x.imgurl
